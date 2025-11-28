@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --mainBoxShadow: var(--Black) 2px 2px 5px;
+  --bigBoxShadow: var(--Black) 0px 10px 30px;
+  --mainBorderRadius: 0px;
+  --bigBorderRadius: 30px;
+
+  --black: #000000;
+  --green: #00a674;
+  --darkGreen: #003e2c;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.end {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+body {
+  font-family: "Oxanium-light", sans-serif;
+  background-color: var(--black);
+  color: var(--green);
+}
