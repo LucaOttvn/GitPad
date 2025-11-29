@@ -42,9 +42,9 @@ export default async function FolderPage(props: FolderPageProps) {
   return (
     <div className="fileExplorer">
       {/* For the rest of the tree, show the children */}
-      {arr.map((item) => {
-        if (item.type === TypesEnum.tree) return <FolderComponent key={item.path} folder={item} />;
-        return <FileComponent key={item.path} file={item} />;
+      {arr.map((item, index) => {
+        if (item.type === TypesEnum.tree) return <FolderComponent key={item.path} folder={item} index={index}/>;
+        return <FileComponent key={item.path} file={item} index={index}/>;
       })}
     </div>
   );
