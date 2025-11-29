@@ -10,6 +10,7 @@ interface FolderPageProps {
 }
 
 export default async function FolderPage(props: FolderPageProps) {
+  // When folderPath is undefined, you're in the /root of the tree
   const {folderPath} = await props.params;
 
   const response = await getRepoContents();
@@ -28,27 +29,23 @@ export default async function FolderPage(props: FolderPageProps) {
   const paths = contents.map((item: TreeItem) => item.path);
 
   const tree: TreeItem[] = buildTree(paths);
-  console.log(tree);
 
   let foundFolder;
 
   if (folderPath) foundFolder = findByPath(tree, folderPath.join("/"));
 
-  if (folderPath && !foundFolder) return <span>No folders</span>;
+  if (folderPath && !foundFolder) return <span>Empty folder</span>;
+
+  // If folderPath is undefined, cycle through the whole tree, otherwise cycle through the current folder's children
+  const arr = !folderPath ? tree : foundFolder!.children;
 
   return (
     <div className="fileExplorer">
-      {!folderPath &&
-        tree.map((item) => {
-          if (item.type === TypesEnum.tree) return <FolderComponent key={item.path} folder={item} />;
-          return <FileComponent file={item} />;
-        })}
-      {folderPath &&
-        foundFolder &&
-        foundFolder.children.map((item, index) => {
-          if (item.type === TypesEnum.tree) return <FolderComponent key={item.path} folder={item} index={index} />;
-          return <FileComponent key={item.path} file={item} index={index} />;
-        })}
+      {/* For the rest of the tree, show the children */}
+      {arr.map((item) => {
+        if (item.type === TypesEnum.tree) return <FolderComponent key={item.path} folder={item} />;
+        return <FileComponent key={item.path} file={item} />;
+      })}
     </div>
   );
 }
