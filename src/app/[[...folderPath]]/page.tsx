@@ -42,7 +42,7 @@ export default async function FolderPage(props: FolderPageProps) {
 
   return (
     <div className="fileExplorer">
-        <BreadCrumbs />
+      <BreadCrumbs />
       <div className="fileExplorerGrid">
         {/* For the rest of the tree, show the children */}
         {arr.map((item, index) => {
