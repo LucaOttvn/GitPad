@@ -45,6 +45,14 @@ body {
   height: 100svh;
 }
 
+.clickableItem {
+  transition: 0.2s;
+  &:active {
+    scale: 1.05;
+    filter: invert(1);
+  }
+}
+
 .mainButton {
   min-width: 3rem;
   min-height: 3rem;
@@ -53,6 +61,7 @@ body {
   align-items: center;
   background-color: var(--grey);
   border-radius: var(--borderRadiusL);
+  
 }
 
 .fileExplorer {

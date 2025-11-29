@@ -12,7 +12,7 @@ interface FileComponentProps {
 export default function FileComponent(props: FileComponentProps) {
   return (
     <AnimatedDiv delay={props.index != undefined ? 0.07 * props.index : 0}>
-      <div className="treeItem" key={props.file.path} style={{background: 'var(--grey)'}}>
+      <div className="treeItem clickableItem" key={props.file.path} style={{background: 'var(--grey)'}}>
         <Image src="/icons/file.svg" alt="folder" width={20} height={20} />
         <span>{props.file.name}</span>
       </div>

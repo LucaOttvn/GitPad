@@ -10,7 +10,7 @@ export default function ToolBar(props: ToolBarProps) {
   return (
     <div id="toolBar">
       <button
-        className="mainButton"
+        className="mainButton clickableItem"
         onClick={() => {
           router.back();
         }}
@@ -18,7 +18,7 @@ export default function ToolBar(props: ToolBarProps) {
         <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
       </button>
       <button
-        className="mainButton"
+        className="mainButton clickableItem"
         onClick={() => {
           router.forward();
         }}
