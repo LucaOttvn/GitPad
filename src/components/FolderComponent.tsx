@@ -1,5 +1,5 @@
 "use client";
-import {TreeItem} from "@/src/utils/models";
+import { TreeItem } from "@/src/utils/models";
 import "./shared-styles.scss";
 import Link from "next/link";
 import Image from "next/image";
@@ -17,7 +17,7 @@ export default function FolderComponent(props: FolderComponentProps) {
   const parentPath = pathname === "/" ? "" : pathname;
   const href = `${parentPath}/${props.folder.name}`;
   return (
-    <AnimatedDiv delay={props.index != undefined ? 0.05 * props.index : 0}>
+    <AnimatedDiv delay={props.index != undefined ? 0.07 * props.index : 0}>
       <Link href={href} className="treeItem" style={{background: "var(--lightBlack)"}}>
         <Image src="/icons/folder.svg" alt="folder" width={20} height={20} />
         <span>{props.folder.name}</span>

@@ -40,6 +40,8 @@ export default async function FolderPage(props: FolderPageProps) {
   // If folderPath is undefined, cycle through the whole tree, otherwise cycle through the current folder's children
   const arr = !folderPath ? tree : foundFolder!.children;
 
+  arr.sort((a, b) => a.name.localeCompare(b.name)); 
+
   return (
     <div className="fileExplorer">
       <BreadCrumbs />
