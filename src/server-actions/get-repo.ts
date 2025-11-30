@@ -4,7 +4,8 @@ export default async function getRepoContents() {
             headers: {
                 'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
                 'Accept': 'application/vnd.github+json'
-            }
+            },
+            next: { revalidate: 3600 } 
         })
         const result = await response.json()
         return result
