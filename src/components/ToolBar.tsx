@@ -11,9 +11,6 @@ export default function ToolBar() {
   const sections = pathName.split("/").filter(x => x);
 
   const href = `/${sections.slice(0, sections.length - 1).join("/")}`;
-  console.log(href)
-
-  console.log(sections)
 
   let isBackDisabled = sections.length === 0 ? ' disabledLink' : ' clickableItem'
 
