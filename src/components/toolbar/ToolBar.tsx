@@ -1,4 +1,4 @@
-"use client";;
+"use client";
 import "./style.scss";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -22,13 +22,13 @@ export default function ToolBar() {
 
       {pathName.includes("file-editor") && !pathName.includes("preview") && (
         <Link href={`${pathName}/preview`} className="mainButton">
-          <span className="mx-5">Preview</span>
+          <span>Preview</span>
         </Link>
       )}
 
       {pathName.includes("file-editor") && pathName.includes("preview") && (
         <Link href={`${editorHref}`} className="mainButton">
-          <span className="mx-5">Editor</span>
+          <span>Editor</span>
         </Link>
       )}
     </div>
