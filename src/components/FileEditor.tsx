@@ -2,6 +2,7 @@
 import {ChangeEvent, useState} from "react";
 import Markdown from "react-markdown";
 import {itemsToPush} from "../utils/signals";
+import './shared-styles.scss'
 
 interface FileEditorProps {
   filePath: string;
@@ -44,7 +45,7 @@ export default function FileEditor(props: FileEditorProps) {
           {props.fileContent && <Markdown>{props.fileContent}</Markdown>}
         </div>
       ) : (
-        <textarea value={text} onChange={handleChange}></textarea>
+        <textarea name="Textarea" value={text} onChange={handleChange}></textarea>
       )}
     </div>
   );

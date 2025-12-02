@@ -23,7 +23,8 @@ export default function ToolBar() {
     const fileContent = itemsToPush.value.find((item) => item.path === filePath);
     if (!fileContent) return;
     const result = await pushFile(filePath, fileContent.content);
-    if (result.status == "ok") toast.success("File pushed!");
+    if (result.status == "ok") return toast.success("File pushed!");
+    toast.error('Push failed')
   };
 
   return (

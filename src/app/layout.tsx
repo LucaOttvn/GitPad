@@ -1,19 +1,8 @@
 import type {Metadata} from "next";
-import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import {ViewTransition} from "react";
 import ToolBar from "../components/toolbar/ToolBar";
-import { ToasterProvider } from "../components/ToasterProvider";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import {ToasterProvider} from "../components/ToasterProvider";
 
 export const metadata: Metadata = {
   title: "GitPad",
@@ -30,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body>
         <ViewTransition enter="slide-in" exit="slide-out">
           {children}
           <ToolBar />

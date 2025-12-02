@@ -1,5 +1,13 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography"; 
+@plugin "@tailwindcss/typography";
+
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: url("/fonts/SpaceGrotesk-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --mainBoxShadow: var(--Black) 2px 2px 5px;
@@ -11,7 +19,7 @@
   --white: #ffffff;
   --black: #101010;
   --lightBlack: #202020;
-  --grey: #404040;
+  --grey: #303030;
   --green: #00a674;
   --darkGreen: #003e2c;
 }
@@ -39,7 +47,7 @@
 }
 
 body {
-  font-family: "Oxanium-light", sans-serif;
+  font-family: "SpaceGrotesk", sans-serif;
   background-color: var(--black);
   color: var(--white);
   width: 100%;
@@ -58,8 +66,8 @@ body {
 }
 
 .disabledLink {
-    pointer-events: none;
-    opacity: 50%;
+  pointer-events: none;
+  opacity: 50%;
 }
 
 .mainButton {
