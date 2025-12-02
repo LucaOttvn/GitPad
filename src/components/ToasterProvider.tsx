@@ -1,0 +1,7 @@
+'use client';
+import { Toaster } from 'react-hot-toast';
+
+// Toaster needs to stay in the main layout but it's a client side component so this is a client side wrapper for it.
+export function ToasterProvider() {
+  return <Toaster position="top-right" />;
+}

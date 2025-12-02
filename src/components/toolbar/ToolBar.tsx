@@ -1,10 +1,11 @@
-"use client";;
+"use client";
 import "./style.scss";
-import { usePathname } from "next/navigation";
+import {usePathname} from "next/navigation";
 import Link from "next/link";
 import ToolBarBackButton from "./ToolBarBackButton";
-import { pushFile } from "@/src/server-actions/push-file";
-import { itemsToPush } from "@/src/utils/signals";
+import {pushFile} from "@/src/server-actions/push-file";
+import {itemsToPush} from "@/src/utils/signals";
+import toast from "react-hot-toast";
 
 /**
  * Bottom toolbar with multiple functions based on the current page.
@@ -22,6 +23,7 @@ export default function ToolBar() {
     const fileContent = itemsToPush.value.find((item) => item.path === filePath);
     if (!fileContent) return;
     const result = await pushFile(filePath, fileContent.content);
+    if (result.status == "ok") toast.success("File pushed!");
   };
 
   return (

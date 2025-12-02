@@ -47,5 +47,5 @@ export async function pushFile(
         throw new Error(`Push failed: ${res.status} - ${err}`);
     }
 
-    return { status: 'ok' }
+    return { status: 'ok', message: 'File pushed successfully' }
 }
