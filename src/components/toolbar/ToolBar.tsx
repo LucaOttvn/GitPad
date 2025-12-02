@@ -31,19 +31,19 @@ export default function ToolBar() {
       <ToolBarBackButton sections={sections} />
 
       {pathName.includes("file-editor") && !pathName.includes("preview") && (
-        <Link href={`${pathName}/preview`} className="mainButton">
+        <Link href={`${pathName}/preview`} className="mainButton clickableItem">
           <span>Preview</span>
         </Link>
       )}
 
       {pathName.includes("file-editor") && pathName.includes("preview") && (
-        <Link href={`${editorHref}`} className="mainButton">
+        <Link href={`${editorHref}`} className="mainButton clickableItem">
           <span>Editor</span>
         </Link>
       )}
 
       {pathName.includes("file-editor") && (
-        <button className="mainButton" onClick={handlePush}>
+        <button className="mainButton clickableItem" onClick={handlePush}>
           <span>Push</span>
         </button>
       )}

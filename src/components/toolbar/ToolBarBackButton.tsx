@@ -17,7 +17,6 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
 
   // When the user clicks on the back button but it's in preview mode, they don't want to go back to the actual previous page, but to "file-editor" instead, so handle this
   if (pathName.includes("preview")) {
-    console.log(backButtonHref);
     backButtonHref =
       "/" +
       backButtonHref
