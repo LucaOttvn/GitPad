@@ -2,8 +2,8 @@
 @plugin "@tailwindcss/typography";
 
 @font-face {
-  font-family: "Poppins";
-  src: url("/fonts/Poppins-Light.ttf") format("truetype");
+  font-family: "Inter";
+  src: url("/fonts/Inter-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -20,10 +20,10 @@
   --darkWhite: #e6e6e6;
   --black: #101010;
   --lightBlack: #202020;
-  
+
   --grey: #303030;
   --lightGrey: #404040;
-  
+
   --green: #00a674;
   --darkGreen: #003e2c;
 }
@@ -51,7 +51,8 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
   background-color: var(--black);
   color: var(--white);
   width: 100%;
@@ -60,12 +61,14 @@ body {
 
 h1 {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 600;
+  letter-spacing: 0.2;
 }
 
 h2 {
   font-size: 1.25rem;
-  font-weight: bold;
+  font-weight: 600;
+  letter-spacing: 0.2;
 }
 
 .clickableItem {

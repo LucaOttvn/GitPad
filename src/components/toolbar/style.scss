@@ -14,13 +14,17 @@
 
 .bottomSheet {
     .bottomSheetBackdrop {
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(4px);
     }
+
     .bottomSheetHeader {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 2rem;
     }
+
     .bottomSheetContainer {
         display: flex;
         flex-direction: column;
@@ -28,8 +32,9 @@
         background-color: var(--lightBlack) !important;
         padding: 2rem 1rem;
         border-radius: var(--borderRadiusM) var(--borderRadiusL) 0 0;
+
         // Bottom sheet content
-        .react-modal-sheet-content-scroller  {
+        .react-modal-sheet-content-scroller {
             display: flex;
             flex-direction: column;
             justify-content: center;

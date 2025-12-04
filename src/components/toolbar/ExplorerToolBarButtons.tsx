@@ -27,6 +27,7 @@ export default function ExplorerToolBarButtons(props: ExplorerToolBarButtonsProp
       >
         <Sheet.Container className="bottomSheetContainer">
           <Sheet.Header className="bottomSheetHeader">
+            <Sheet.DragIndicator />
             <h2>Create new item or folder</h2>
           </Sheet.Header>
           <Sheet.Content className="bottomSheetContent">
@@ -35,16 +36,19 @@ export default function ExplorerToolBarButtons(props: ExplorerToolBarButtonsProp
               <button className="mainButton clickableItem" onClick={() => setIsBottomSheetOpen(false)}>
                 <span>Cancel</span>
               </button>
-              <button className="mainButton clickableItem" style={{
-                background: 'var(--darkWhite)',
-                color: 'var(--black)'
-              }}>
+              <button
+                className="mainButton clickableItem"
+                style={{
+                  background: "var(--darkWhite)",
+                  color: "var(--black)",
+                }}
+              >
                 <span>Create</span>
               </button>
             </div>
           </Sheet.Content>
         </Sheet.Container>
-        <Sheet.Backdrop onTap={() => setIsBottomSheetOpen(false)} className="bottomSheetBackdrop" />
+        <Sheet.Backdrop unstyled onTap={() => setIsBottomSheetOpen(false)} className="bottomSheetBackdrop" />
       </Sheet>
     </div>
   );
