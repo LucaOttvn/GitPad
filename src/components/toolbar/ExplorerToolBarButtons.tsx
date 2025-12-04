@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {useState} from "react";
 import {Sheet} from "react-modal-sheet";
 
@@ -9,7 +10,9 @@ export default function ExplorerToolBarButtons(props: ExplorerToolBarButtonsProp
   return (
     <div>
       <button onClick={() => setIsBottomSheetOpen(true)} className="mainButton clickableItem">
-        <span>Open sheet</span>
+        <span>
+          <Image src="/icons/add.svg" alt="folder" width={20} height={20} />
+        </span>
       </button>
 
       <Sheet
@@ -32,7 +35,10 @@ export default function ExplorerToolBarButtons(props: ExplorerToolBarButtonsProp
               <button className="mainButton clickableItem" onClick={() => setIsBottomSheetOpen(false)}>
                 <span>Cancel</span>
               </button>
-              <button className="mainButton clickableItem">
+              <button className="mainButton clickableItem" style={{
+                background: 'var(--darkWhite)',
+                color: 'var(--black)'
+              }}>
                 <span>Create</span>
               </button>
             </div>

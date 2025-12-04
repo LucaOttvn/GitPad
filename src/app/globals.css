@@ -17,10 +17,13 @@
   --borderRadiusXL: 2rem;
 
   --white: #ffffff;
+  --darkWhite: #e6e6e6;
   --black: #101010;
   --lightBlack: #202020;
+  
   --grey: #303030;
   --lightGrey: #404040;
+  
   --green: #00a674;
   --darkGreen: #003e2c;
 }
