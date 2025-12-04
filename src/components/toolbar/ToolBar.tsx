@@ -4,6 +4,9 @@ import {usePathname} from "next/navigation";
 import ToolBarBackButton from "./ToolBarBackButton";
 import EditorToolBarButtons from "./EditorToolBarButtons";
 import {PagesEnum} from "@/src/utils/enums";
+import ExplorerToolBarButtons from "./ExplorerToolBarButtons";
+import {useState} from "react";
+import {Sheet} from "react-modal-sheet";
 
 /**
  * Bottom toolbar with multiple functions based on the current page.
@@ -17,7 +20,8 @@ export default function ToolBar() {
     <div id="toolBar">
       <ToolBarBackButton sections={sections} />
       {sections[0] === PagesEnum.fileEditor && <EditorToolBarButtons sections={sections} />}
-      {sections[0] === PagesEnum.fileExplorer && <EditorToolBarButtons sections={sections} />}
+      {sections[0] === PagesEnum.fileExplorer && <ExplorerToolBarButtons />}
+    
     </div>
   );
 }

@@ -36,7 +36,6 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
     if (!itemToUpdate) return;
     try {
       const result = await pushFile(filePath, itemToUpdate.content);
-      console.log(result);
       if (result.status == "ok") return toast.success("File pushed!");
     } catch (error) {
       console.log(error);

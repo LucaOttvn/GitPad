@@ -11,3 +11,29 @@
     border-radius: var(--borderRadiusXL);
     padding: 0.5rem;
 }
+
+.bottomSheet {
+    .bottomSheetBackdrop {
+        backdrop-filter: blur(10px);
+    }
+    .bottomSheetHeader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .bottomSheetContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        background-color: var(--lightBlack) !important;
+        padding: 2rem 1rem;
+        border-radius: var(--borderRadiusM) var(--borderRadiusL) 0 0;
+        // Bottom sheet content
+        .react-modal-sheet-content-scroller  {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2rem;
+        }
+    }
+}
