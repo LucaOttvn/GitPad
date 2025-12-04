@@ -4,8 +4,6 @@ import getFileMetadata from "./get-file-metadata";
 export async function pushFile(
     path: string,
     content: string,
-    branch = 'main',
-    message = 'Update via GitPad'
 ) {
     // Get current file SHA (skip for pure creates)
     let sha = '';
@@ -17,10 +15,10 @@ export async function pushFile(
     }
 
     const body = JSON.stringify({
-        message,
+        message: 'Update via GitPad',
         content: btoa(unescape(encodeURIComponent(content))),
         ...(sha && { sha }), // Only include sha for updates
-        branch,
+        branch: 'main',
     });
 
 

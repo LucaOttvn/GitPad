@@ -35,10 +35,12 @@
 
         // Bottom sheet content
         .react-modal-sheet-content-scroller {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 2rem;
+            form {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+            }
         }
     }
 }
