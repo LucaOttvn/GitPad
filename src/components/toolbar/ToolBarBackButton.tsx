@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import {usePathname, useRouter} from "next/navigation";
+import { PagesEnum } from "@/src/utils/enums";
 
 interface ToolBarBackButtonProps {
   sections: string[];
@@ -13,7 +14,7 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
   let isBackDisabled = props.sections.length === 1 ? " disabledLink" : " clickableItem";
 
   // Slice from 1 because the base url is /file-explorer
-  let backButtonHref = `/file-explorer/${props.sections.slice(1, props.sections.length - 1).join("/")}`;
+  let backButtonHref = `/${PagesEnum.fileExplorer}/${props.sections.slice(1, props.sections.length - 1).join("/")}`;
 
   // When the user clicks on the back button but it's in preview mode, they don't want to go back to the actual previous page, but to "file-editor" instead, so handle this
   if (pathName.includes("preview")) {
@@ -43,21 +44,21 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
       */}
 
       {/* Normal back button behavior */}
-      {props.sections[0] !== "file-editor" && (
+      {props.sections[0] !== PagesEnum.fileEditor && (
         <Link href={backButtonHref} className={"mainButton" + isBackDisabled}>
           <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
         </Link>
       )}
 
       {/* If in file editor and preview mode */}
-      {props.sections[0] === "file-editor" && props.sections.includes("preview") && (
+      {props.sections[0] === PagesEnum.fileEditor && props.sections.includes("preview") && (
         <Link href={backButtonHref} className={"mainButton" + isBackDisabled}>
           <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
         </Link>
       )}
 
       {/* If in file editor in editor mode */}
-      {props.sections[0] === "file-editor" && !props.sections.includes("preview") && (
+      {props.sections[0] === PagesEnum.fileEditor && !props.sections.includes("preview") && (
         <button
           className={"mainButton" + isBackDisabled}
           disabled={props.sections.length === 0}

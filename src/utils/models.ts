@@ -7,7 +7,6 @@ export interface TreeItem {
     children: TreeItem[];
 }
 
-
 export interface Content {
     name: string
 }

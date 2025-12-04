@@ -1,4 +1,4 @@
-import { effect, signal } from "@preact/signals";
+import { effect, signal } from "@preact/signals-react";
 import { TreeItem } from "./models";
 
 export const test = signal<TreeItem[]>([])
