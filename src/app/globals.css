@@ -20,12 +20,14 @@
   --darkWhite: #e6e6e6;
   --black: #101010;
   --lightBlack: #202020;
-
+  --darkGrey: #252525;
   --grey: #303030;
   --lightGrey: #404040;
 
   --green: #00a674;
   --darkGreen: #003e2c;
+
+  --red: #d62828;
 }
 
 ::-webkit-scrollbar {
@@ -97,19 +99,6 @@ h2 {
   border-radius: var(--borderRadiusL);
   span {
     margin: 0 1rem;
-  }
-}
-
-.mainInputField {
-  width: 100%;
-  padding: 1rem;
-  border-radius: var(--borderRadiusL);
-  background-color: var(--grey) !important;
-  transition: 0.2s;
-  border: solid 2px transparent;
-  &:focus {
-    outline: none;
-    border: solid 2px var(--lightGrey);
   }
 }
 

@@ -2,6 +2,7 @@ import {createFile} from "@/src/server-actions/create-file";
 import {usePathname} from "next/navigation";
 import {useActionState} from "react";
 import {Sheet} from "react-modal-sheet";
+import TextInput from "../inputs/TextInput";
 
 interface BottomSheetProps {
   isOpen: boolean;
@@ -68,8 +69,8 @@ export default function BottomSheet(props: BottomSheetProps) {
         </Sheet.Header>
         <Sheet.Content className="bottomSheetContent">
           <form action={handleCreateFile}>
-            <input name="name" type="text" className="mainInputField" placeholder="Prefix with / to create folder, use .txt or .md for files" disabled={isPending} required />
-            {state?.message && <p className={`text-sm mt-2 ${state.success ? "text-green-500" : "text-red-500"}`}>{state.message}</p>}
+            <TextInput placeholder="Prefix with / to create folder, use .txt or .md for files" state={state} />
+
             <div className="w-full center gap-4 flex">
               <button type="button" className="mainButton clickableItem" onClick={() => props.handleBottomSheet(false)} disabled={isPending}>
                 <span>Cancel</span>

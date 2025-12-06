@@ -1,0 +1,30 @@
+.textInputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    border-radius: var(--borderRadiusL);
+    gap: 0.5rem;
+
+    input {
+        border-radius: inherit;
+        width: 100%;
+        padding: 1rem;
+        transition: 0.2s;
+        background-color: var(--grey) !important;
+        border: solid 1px var(--lightGrey);
+
+        &:focus {
+            outline: none;
+            border: solid 1px var(--darkWhite);
+        }
+    }
+
+    span {
+        width: 90%;
+        text-align: center;
+        padding: 0.5rem 0;
+        font-size: 80%;
+        border-radius: inherit;
+    }
+}
