@@ -8,7 +8,22 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GITHUB_SECRET!,
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    async jwt({ token, account }) {
+      // First time user logs in
+      if (account) {
+        token.accessToken = account.access_token
+      }
+      return token
+    },
+    async session({ session, token }) {
+      // Expose on session
+      // @ts-ignore
+      session.accessToken = token.accessToken
+      return session
+    },
+  },
+  secret: process.env.AUTH_SECRET,
 }
 
 const handler = NextAuth(authOptions)
