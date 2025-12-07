@@ -11,7 +11,7 @@ export default function LoginPage() {
     redirect(PagesEnum.fileExplorer);
   }
   return (
-    <div className="w-full h-full center flex-col gap-16">
+    <div className="w-full h-full center flex-col gap-10">
       <div className="start gap-3">
         <Image
           src="/icons/GitPad.png"

@@ -10,12 +10,24 @@ export default function ExplorerToolBarButtons() {
   };
 
   return (
-    <div>
+    <div className="w-full flex items-center justify-between gap-2">
       <button onClick={() => setIsBottomSheetOpen(true)} className="mainButton clickableItem">
         <span>
           <Image src="/icons/add.svg" alt="folder" width={20} height={20} />
         </span>
       </button>
+      <div className="flex gap-2">
+        <button className="mainButton clickableItem" disabled>
+          <span>
+            <Image src="/icons/search.svg" alt="folder" width={20} height={20} />
+          </span>
+        </button>
+        <button className="mainButton clickableItem" disabled>
+          <span>
+            <Image src="/icons/settings.svg" alt="folder" width={20} height={20} />
+          </span>
+        </button>
+      </div>
       <BottomSheet isOpen={isBottomSheetOpen} handleBottomSheet={handleBottomSheet} />
     </div>
   );
