@@ -29,7 +29,7 @@ export default function FileComponent(props: FileComponentProps) {
             pointerEvents: "all",
           }}
           onClick={() => {
-            toast.error("GitPad is only designed to handle .md or .txt files!");
+            toast.error("GitPad can only handle .md or .txt files");
           }}
         >
           <Image src="/icons/file.svg" alt="folder" width={20} height={20} />
