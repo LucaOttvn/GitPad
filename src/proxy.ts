@@ -8,8 +8,6 @@ export async function proxy(req: NextRequest) {
     secret: process.env.AUTH_SECRET,
   })
 
-  console.log(token)
-
   if (!token) {
     const loginUrl = new URL("/login", req.url)
     return NextResponse.redirect(loginUrl)
@@ -19,5 +17,5 @@ export async function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/file-editor/:path*", "/file-explorer/:path*"],
+  matcher: ["/file-editor/:path*", "/file-explorer/:path*", "/settings/:path*"],
 }

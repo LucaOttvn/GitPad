@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import {usePathname, useRouter} from "next/navigation";
-import { PagesEnum } from "@/src/utils/enums";
+import {PagesEnum} from "@/src/utils/enums";
 
 interface ToolBarBackButtonProps {
   sections: string[];
@@ -27,6 +27,20 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
         .join("/");
   }
 
+  // In all the cases when the back button has to simply to a router.back() => isStandardBack = true
+  let isStandardBack = false;
+  switch (props.sections[0]) {
+    case PagesEnum.fileEditor:
+      if (!props.sections.includes("preview")) isStandardBack = true;
+      break;
+    case PagesEnum.settings:
+      isStandardBack = true;
+      break;
+
+    default:
+      break;
+  }
+
   return (
     <>
       {/*
@@ -43,8 +57,8 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
        While it should become this instead: ../file-explorer/<previousPath>
       */}
 
-      {/* Normal back button behavior */}
-      {props.sections[0] !== PagesEnum.fileEditor && (
+      {/* Back button behavior in file-explorer */}
+      {props.sections[0] === PagesEnum.fileExplorer && (
         <Link href={backButtonHref} className={"mainButton" + isBackDisabled}>
           <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
         </Link>
@@ -58,10 +72,9 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
       )}
 
       {/* If in file editor in editor mode */}
-      {props.sections[0] === PagesEnum.fileEditor && !props.sections.includes("preview") && (
+      {isStandardBack && (
         <button
-          className={"mainButton" + isBackDisabled}
-          disabled={props.sections.length === 0}
+          className="mainButton clickableItem"
           onClick={() => {
             router.back();
           }}

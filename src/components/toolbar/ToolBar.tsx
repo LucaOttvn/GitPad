@@ -1,9 +1,9 @@
 "use client";
 import "./style.scss";
-import {usePathname} from "next/navigation";
+import { usePathname } from "next/navigation";
 import ToolBarBackButton from "./ToolBarBackButton";
 import EditorToolBarButtons from "./EditorToolBarButtons";
-import {PagesEnum} from "@/src/utils/enums";
+import { PagesEnum } from "@/src/utils/enums";
 import ExplorerToolBarButtons from "./ExplorerToolBarButtons";
 
 /**
@@ -14,13 +14,15 @@ export default function ToolBar() {
 
   const sections = pathName.split("/").filter((x) => x);
 
-  if (pathName.includes("/login")) return null;
+  if (pathName.includes(`/${PagesEnum.login}`)) return null;
 
   return (
     <div id="toolBar">
       <ToolBarBackButton sections={sections} />
-      {sections[0] === PagesEnum.fileEditor && <EditorToolBarButtons sections={sections} />}
+      
       {sections[0] === PagesEnum.fileExplorer && <ExplorerToolBarButtons />}
+
+      {sections[0] === PagesEnum.fileEditor && <EditorToolBarButtons sections={sections} />}
     </div>
   );
 }

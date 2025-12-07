@@ -5,5 +5,7 @@ export enum TypesEnum {
 
 export enum PagesEnum {
     fileExplorer = 'file-explorer',
-    fileEditor = 'file-editor'
+    fileEditor = 'file-editor',
+    settings = 'settings',
+    login = 'login'
 }
