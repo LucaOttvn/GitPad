@@ -1,15 +1,21 @@
+'use server';
+import { getServerSession } from "next-auth";
+import { authOptions } from "../app/api/auth/[...nextauth]/route";
+import getGithubApiUrl from "./get-github-api-url";
+
 export default async function getRepoContents() {
     try {
-        const response = await fetch('https://api.github.com/repos/LucaOttvn/DOCS/git/trees/main?recursive=1', {
+        const session = await getServerSession(authOptions) as any
+        const baseUrl = await getGithubApiUrl()
+        const response = await fetch(`${baseUrl}/git/trees/main?recursive=1`, {
             headers: {
-                'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
+                Authorization: `Bearer ${session.accessToken}`,
                 'Accept': 'application/vnd.github+json'
             },
-            next: { revalidate: 3600 } 
+            next: { revalidate: 3600 }
         })
-        const result = await response.json()
-        return result
+        return await response.json()
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 }

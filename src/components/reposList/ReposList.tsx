@@ -1,8 +1,8 @@
 "use client";
-import {Suspense, useEffect, useState} from "react";
-import {getUserRepos} from "../../server-actions/get-user-repos";
+import { useEffect, useState } from "react";
+import { getUserRepos } from "../../server-actions/get-user-repos";
 import "./style.scss";
-import {setCookie} from "cookies-next";
+import { setCookie } from "cookies-next";
 
 export default function ReposList() {
   const [repos, setRepos] = useState<string[]>([]);

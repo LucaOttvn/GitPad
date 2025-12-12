@@ -3,6 +3,9 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "../app/api/auth/[...nextauth]/route";
 
+/**
+ * Get the full list of user's repositories.
+ */
 export async function getUserRepos() {
     const session = await getServerSession(authOptions) as any;
 

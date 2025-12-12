@@ -2,30 +2,38 @@
 
 import { base64encode } from 'byte-base64'
 import { APIResponse } from '../utils/models'
+import getGithubApiUrl from './get-github-api-url'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '../app/api/auth/[...nextauth]/route'
 
 export async function createItem(
-    filePath: string,
-    fileContent: string
+    filePath: string
 ): Promise<APIResponse> {
     try {
-        const url = `https://api.github.com/repos/LucaOttvn/DOCS/contents/${filePath}`
+
+        const baseUrl = await getGithubApiUrl()
+        const url = `${baseUrl}/contents/${filePath}`
+
+        const session = await getServerSession(authOptions) as any;
+        if (!session || !session.user || !session.user.name || !session.user.email) {
+            throw Error('No valid Github session')
+        }
 
         const body = {
             message: `Create ${filePath}`,
             committer: {
-                name: 'Luca Ottaviano',
-                email: 'lucatremila@gmail.com'
+                name: session.user.name,
+                email: session.user.email
             },
-            content: base64encode(fileContent),
+            content: '',
             branch: 'main',
         }
 
         const response = await fetch(url, {
             method: 'PUT',
             headers: {
-                'Authorization': `token ${process.env.GITHUB_TOKEN}`,
+                'Authorization': `Bearer ${session.accessToken}`,
                 'Accept': 'application/vnd.github.v3+json',
-                'Content-Type': 'application/json'
             },
             body: JSON.stringify(body)
         })

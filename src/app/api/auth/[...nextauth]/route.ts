@@ -27,13 +27,16 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     // The jwt callback runs on login, logout and session check (useSession() or getServerSession())
     // It returns a modified token object that NextAuth then encrypts and stores as a cookie
-    async jwt({ token, account }) {
+    async jwt({ token, account, profile }) {
       // This condition detects the first sign-in vs regular session checks
       // In the first one in fact, the account object looks like this:
       // { access_token: "gho_...", provider: "github" }, while on subsequent session checks it's undefined
       if (account) {
         // Add to the standard JWT token the account's access token
         token.accessToken = account.access_token
+      }
+      if (profile) {
+        token.name = (profile as any).login
       }
       // The returned token will now look like this:
       // {
