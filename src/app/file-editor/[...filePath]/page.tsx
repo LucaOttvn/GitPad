@@ -13,11 +13,11 @@ export default async function FileEditorPage(props: FileEditorPageProps) {
   // If preview mode => remove the last section of the url ("/preview") and search the file by path
   const filePathToFind = isPreviewMode ? filePath.slice(0, -1) : filePath;
 
-  const fileContent: string = await getFile(filePathToFind.join("/"));
+  const fileContent = await getFile(filePathToFind.join("/"));
 
   return (
     <div className="w-full h-full">
-      <FileEditor filePath={filePath.join("/")} fileContent={fileContent} isPreviewMode={isPreviewMode} />
+      <FileEditor filePath={filePath.join("/")} fileContent={fileContent || ''} isPreviewMode={isPreviewMode} />
     </div>
   );
 }
