@@ -13,6 +13,7 @@ interface BottomSheetProps {
 export default function BottomSheet(props: BottomSheetProps) {
   const router = useRouter()
   const pathName = usePathname();
+  
   const sections = pathName
     .split("/")
     .filter((x) => x)
