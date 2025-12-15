@@ -16,6 +16,15 @@ export async function proxy(req: NextRequest) {
     return NextResponse.redirect(loginUrl)
   }
 
+  const pathname = req.nextUrl.pathname
+
+  const selectedRepo = req.cookies.get('selectedRepo')?.value
+
+  if (!selectedRepo && !pathname.startsWith('/settings') && pathname !== '/settings') {
+    const settingsUrl = new URL("/settings", req.url)
+    return NextResponse.redirect(settingsUrl)
+  }
+
   return NextResponse.next()
 }
 
@@ -23,3 +32,4 @@ export async function proxy(req: NextRequest) {
 export const config = {
   matcher: ["/file-editor/:path*", "/file-explorer/:path*", "/settings/:path*"],
 }
+

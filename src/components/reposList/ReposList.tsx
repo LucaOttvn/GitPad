@@ -2,9 +2,12 @@
 import { useEffect, useState } from "react";
 import { getUserRepos } from "../../server-actions/get-user-repos";
 import "./style.scss";
-import { setCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 
 export default function ReposList() {
+
+  const router = useRouter()
   const [repos, setRepos] = useState<string[]>([]);
 
   useEffect(() => {
@@ -22,6 +25,7 @@ export default function ReposList() {
       path: "/", // Available site-wide
       domain: undefined, // Your domain only
     });
+    router.refresh()
   };
 
   return (
@@ -35,6 +39,10 @@ export default function ReposList() {
             }}
             key={repoName}
             className="repo clickableItem"
+            style={{
+              background: getCookie('selectedRepo') === repoName ? 'var(--white)' : '',
+              color: getCookie('selectedRepo') === repoName ? 'var(--black)' : ''
+            }}
           >
             {repoName}
           </button>
