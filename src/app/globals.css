@@ -116,7 +116,7 @@ h2 {
   .fileExplorerGrid {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
   }
 }
