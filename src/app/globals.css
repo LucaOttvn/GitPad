@@ -21,7 +21,7 @@
 
   --black: #101010;
   --lightBlack: #181818;
-  
+
   --darkGrey: #252525;
   --grey: #303030;
   --lightGrey: #909090;
@@ -30,6 +30,22 @@
   --darkGreen: #003e2c;
 
   --red: #d62828;
+}
+
+/* Prevent zoom on input focus (iOS Safari) */
+input,
+textarea,
+select {
+  font-size: 16px; /* Minimum 16px prevents auto-zoom */
+  touch-action: manipulation; /* Faster touch response */
+}
+
+/* Disable text selection/zoom cues */
+* {
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::-webkit-scrollbar {
