@@ -76,6 +76,7 @@ h2 {
 
 .clickableItem {
   transition: 0.2s;
+  scale: 0.99;
   &:not(:disabled):active {
     scale: 0.95;
   }
