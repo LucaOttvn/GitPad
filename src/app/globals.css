@@ -18,11 +18,13 @@
 
   --white: #ffffff;
   --darkWhite: #e6e6e6;
+
   --black: #101010;
   --lightBlack: #181818;
+  
   --darkGrey: #252525;
   --grey: #303030;
-  --lightGrey: #404040;
+  --lightGrey: #999999;
 
   --green: #00a674;
   --darkGreen: #003e2c;
@@ -76,7 +78,6 @@ h2 {
 
 .clickableItem {
   transition: 0.2s;
-  scale: 0.99;
   &:not(:disabled):active {
     scale: 0.95;
   }
@@ -115,7 +116,7 @@ h2 {
   .fileExplorerGrid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 0.5rem;
   }
 }
