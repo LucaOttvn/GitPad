@@ -4,6 +4,7 @@ import Markdown from "react-markdown";
 import {itemsToPush} from "../utils/signals";
 import "./shared-styles.scss";
 import {useSignal} from "@preact/signals-react";
+import AnimatedDiv from "./animated/AnimatedDiv";
 
 interface FileEditorProps {
   filePath: string;
@@ -48,7 +49,7 @@ export default function FileEditor(props: FileEditorProps) {
   };
 
   return (
-    <div className="w-full h-full">
+    <AnimatedDiv className="w-full h-full">
       {props.isPreviewMode ? (
         <div
           className="w-full h-full flex flex-col justify-start items-start overflow-auto prose dark:prose-invert"
@@ -62,6 +63,6 @@ export default function FileEditor(props: FileEditorProps) {
       ) : (
         <textarea name="Textarea" value={text} onChange={handleChange}></textarea>
       )}
-    </div>
+    </AnimatedDiv>
   );
 }
