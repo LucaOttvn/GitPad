@@ -1,10 +1,10 @@
 import { createItem } from "@/src/server-actions/create-item";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useActionState } from "react";
 import { Sheet } from "react-modal-sheet";
 import TextInput from "../inputs/TextInput";
 import toast from "react-hot-toast";
-import './style.scss'
+import "./style.scss";
 
 interface BottomSheetProps {
   isOpen: boolean;
@@ -12,7 +12,6 @@ interface BottomSheetProps {
 }
 
 export default function BottomSheet(props: BottomSheetProps) {
-  const router = useRouter()
   const pathName = usePathname();
 
   const sections = pathName
@@ -28,22 +27,26 @@ export default function BottomSheet(props: BottomSheetProps) {
       return {success: false, message: "Name cannot be empty"};
     }
 
-    
     const trimmedName = newItemName.trim();
 
     // Check if it's a folder (ends with /) or a file with one of the allowed extensions
     if (trimmedName.startsWith("/") || trimmedName.endsWith(".txt") || trimmedName.endsWith(".md")) {
       try {
         // If filePathName is empty (then the user is creating a new item in the root folder), exclude the slash
-        const response = await createItem(`${filePathName ? filePathName + "/" : ""}${trimmedName}`);
-        if (!response.success) throw Error(response.message);
+        const promise = createItem(`${filePathName ? filePathName + "/" : ""}${trimmedName}`);
+
+        await toast.promise(promise, {
+          loading: "Creating item...",
+          success: "Item created successfully!",
+          error: "Error while creating",
+        });
         props.handleBottomSheet(false);
-        toast.success('Item created successfully');
-        location.reload()
-        return {success: true, message: 'Item created successfully'}
+        setTimeout(()=> {
+          location.reload();
+        }, 500)
+        return {success: true, message: "Item created successfully"};
       } catch (error) {
         console.error(error);
-        toast.error((error as any).message);
         props.handleBottomSheet(false);
       }
     }

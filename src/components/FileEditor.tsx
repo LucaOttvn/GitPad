@@ -1,10 +1,10 @@
 "use client";
 import {ChangeEvent, useState} from "react";
 import Markdown from "react-markdown";
-import {itemsToPush} from "../utils/signals";
 import "./shared-styles.scss";
 import {useSignal} from "@preact/signals-react";
 import AnimatedDiv from "./animated/AnimatedDiv";
+import { itemToPush } from "../utils/signals";
 
 interface FileEditorProps {
   filePath: string;
@@ -21,31 +21,13 @@ export default function FileEditor(props: FileEditorProps) {
     const updatedText = event.target.value;
     setText(updatedText);
 
-    // Check if the item is already in the list of updated items the need to be pushed
-    const foundIndex = itemsToPush.value.findIndex((item) => item.path === props.filePath);
-
-    // If it's not in the list, add it
-    if (foundIndex === -1) {
-      itemsToPush.value = [
-        ...itemsToPush.value,
-        {
-          path: props.filePath,
-          content: updatedText,
-        },
-      ];
-      return;
+    // If there's an update in the current text compared to the starting version
+    if (text !== props.fileContent) {
+      itemToPush.value = {path: props.filePath, content: updatedText}
+      localStorage.setItem("itemToPush", props.filePath);
+      return
     }
-
-    // If it's in the list but the user went back to the previous version, so there are no changes to push, remove it
-    if (updatedText === props.fileContent) {
-      const updatedArr = itemsToPush.value.filter((item) => item.path !== props.filePath);
-
-      itemsToPush.value = updatedArr;
-      return;
-    }
-
-    // If it's in the list already, update it
-    itemsToPush.value = itemsToPush.value.map((item, index) => (index === foundIndex ? {...item, content: updatedText} : item));
+    localStorage.removeItem("itemToPush");
   };
 
   return (

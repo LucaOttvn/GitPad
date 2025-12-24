@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
-import { PagesEnum } from "@/src/utils/enums";
-import { toast } from "react-hot-toast";
+import {usePathname, useRouter} from "next/navigation";
+import {PagesEnum} from "@/src/utils/enums";
+import {toast} from "react-hot-toast";
+import {itemToPush} from "@/src/utils/signals";
 
 interface ToolBarBackButtonProps {
   sections: string[];
@@ -13,6 +14,8 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
   const router = useRouter();
 
   let isBackDisabled = props.sections.length === 1 ? " disabledItem" : " clickableItem";
+
+  const filePath = props.sections.slice(1).join("/");
 
   // Slice from 1 because the base url is /file-explorer
   let backButtonHref = `/${PagesEnum.fileExplorer}/${props.sections.slice(1, props.sections.length - 1).join("/")}`;
@@ -41,6 +44,46 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
     default:
       break;
   }
+
+  const handleBack = () => {
+    // If there are no updates to push for this file, just go back
+    if (!itemToPush.value || itemToPush.value.path != filePath) {
+      router.back();
+      itemToPush.value = undefined;
+      return;
+    }
+
+    toast(
+      (t) => (
+        <div className="flex flex-col gap-3">
+          <span>
+            There are some updates to push. <br /> If you go back now any update will be lost
+          </span>
+          <div className="flex gap-2 justify-end pt-2">
+            <button
+              onClick={() => {
+                toast.dismiss(t.id);
+                router.back();
+                itemToPush.value = undefined;
+              }}
+              className="mainButton clickableItem"
+              style={{
+                color: "var(--white)",
+              }}
+            >
+              <span>Discard & Leave</span>
+            </button>
+            <button onClick={() => toast.dismiss(t.id)} className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200">
+              Stay
+            </button>
+          </div>
+        </div>
+      ),
+      {
+        duration: Infinity,
+      }
+    );
+  };
 
   return (
     <>
@@ -71,40 +114,7 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
       )}
       {/* If in file editor in editor mode */}
       {isStandardBack && (
-        <button
-          className="mainButton clickableItem"
-          onClick={() => {
-            toast(
-              (t) => (
-                <div className="flex flex-col gap-3">
-                  <span>
-                    There are some updates to push. <br /> If you go back now they will be discarded
-                  </span>
-                  <div className="flex gap-2 justify-end pt-2">
-                    <button
-                      onClick={() => {
-                        toast.dismiss(t.id);
-                        router.back();
-                      }}
-                      className="mainButton clickableItem"
-                      style={{
-                        color: "var(--white)",
-                      }}
-                    >
-                      <span>Discard & Leave</span>
-                    </button>
-                    <button onClick={() => toast.dismiss(t.id)} className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200">
-                      Stay
-                    </button>
-                  </div>
-                </div>
-              ),
-              {
-                duration: Infinity, // Stays until dismissed
-              }
-            );
-          }}
-        >
+        <button className="mainButton clickableItem" onClick={handleBack}>
           <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
         </button>
       )}

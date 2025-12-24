@@ -6,7 +6,7 @@ import { authOptions } from '../app/api/auth/[...nextauth]/route';
 
 export async function createItem(
     filePath: string
-): Promise<APIResponse> {
+): Promise<APIResponse | ErrorConstructor> {
     try {
 
         const baseUrl = await getGithubApiUrl()
@@ -48,7 +48,6 @@ export async function createItem(
             message: 'Item created successfully'
         }
     } catch (error) {
-        console.error(error)
-        return { message: (error as { message: string }).message, success: false }
+        throw new Error((error as { success: boolean, message: string }).message || 'GitHub API error')
     }
 }

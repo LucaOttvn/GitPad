@@ -1,5 +1,3 @@
-import { effect, signal } from "@preact/signals-react";
-import { TreeItem } from "./models";
+import { signal } from "@preact/signals-react";
 
-export const test = signal<TreeItem[]>([])
-export const itemsToPush = signal<{ path: string, content: string }[]>([])
+export const itemToPush = signal<{ path: string, content: string }>()

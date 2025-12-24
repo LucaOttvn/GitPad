@@ -1,15 +1,13 @@
 "use client";
-
 import {deleteItem} from "@/src/server-actions/delete-item";
 import {pushFile} from "@/src/server-actions/push-file";
-import {itemsToPush} from "@/src/utils/signals";
-import {useSignal, useSignalEffect} from "@preact/signals-react";
+import {useSignal} from "@preact/signals-react";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
-import {useState} from "react";
 import toast from "react-hot-toast";
 import Image from "next/image";
 import {useRouter} from "next/navigation";
+import {itemToPush} from "@/src/utils/signals";
 
 interface EditorToolBarButtonsProps {
   sections: string[];
@@ -24,22 +22,14 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
 
   const pathName = usePathname();
 
-  const [itemToUpdate, setItemToUpdate] = useState<{path: string; content: string}>();
-
   const editorHref = `/${props.sections.slice(0, -1).join("/")}`;
 
   const filePath = props.sections.slice(1).join("/");
 
-  useSignalEffect(() => {
-    // Every time that itemsToPush gets updated, update the state so that when handlePush() is triggered, it has its latest value
-    const foundItemToUpdate = itemsToPush.value.find((item) => item.path === filePath);
-    setItemToUpdate(foundItemToUpdate);
-  });
-
   const handlePush = async () => {
-    if (!itemToUpdate) return;
+    if (!itemToPush.value || itemToPush.value.path !== filePath) return toast.error("No updates to push");
     try {
-      const promise = pushFile(filePath, itemToUpdate.content);
+      const promise = pushFile(filePath, itemToPush.value.content);
 
       toast.promise(promise, {
         loading: "Pushing file...",
@@ -50,19 +40,51 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
       console.error(error);
     }
 
-    router.refresh()
+    router.refresh();
   };
 
   const handleDelete = async () => {
-    try {
-      const result = await deleteItem(filePath);
-      if (!result) throw Error("Item deletion failed");
-      toast.success("Item deleted successfully");
-      router.back();
-    } catch (error) {
-      console.error(error);
-      toast.error("Item deletion failed");
-    }
+    toast(
+      (t) => (
+        <div className="flex flex-col gap-3">
+          <span>Do you really want to delete this file? The action is irreversible.</span>
+          <div className="flex gap-2 justify-end pt-2">
+            <button
+              onClick={async () => {
+                toast.dismiss(t.id);
+
+                try {
+                  const promise = deleteItem(filePath);
+
+                  await toast.promise(promise, {
+                    loading: "Deleting file...",
+                    success: "File deleted!",
+                    error: "Error while deleting file",
+                  });
+                  router.back();
+                  itemToPush.value = undefined;
+                } catch (error) {
+                  console.error(error);
+                  toast.error("Item deletion failed");
+                }
+              }}
+              className="mainButton clickableItem"
+              style={{
+                color: "var(--white)",
+              }}
+            >
+              <span>Confirm</span>
+            </button>
+            <button onClick={() => toast.dismiss(t.id)} className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200">
+              Cancel
+            </button>
+          </div>
+        </div>
+      ),
+      {
+        duration: Infinity,
+      }
+    );
   };
 
   const isPreviewMode = props.sections[props.sections.length - 1] === "preview";
@@ -79,7 +101,7 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
         </Link>
       )}
 
-      <button className="mainButton clickableItem" disabled={!itemToUpdate} onClick={handlePush}>
+      <button className="mainButton clickableItem" onClick={handlePush}>
         <span>Push</span>
       </button>
       {/* Trash button */}
