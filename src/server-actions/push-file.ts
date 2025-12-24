@@ -1,13 +1,14 @@
 'use server'
 
 import { authOptions } from "../app/api/auth/[...nextauth]/route"
+import { APIResponse } from "../utils/models"
 import getFileMetadata from "./get-file-metadata"
 import { getServerSession } from "next-auth"
 
 export async function pushFile(
   path: string,
   content: string,
-): Promise<{status: string, message: string}> {
+): Promise<APIResponse | Error> {
   // Get user session
   const session = await getServerSession(authOptions)
 
@@ -59,5 +60,5 @@ export async function pushFile(
     throw new Error(`Push failed: ${res.status} - ${err}`)
   }
 
-  return { status: "ok", message: "File pushed successfully" }
+  return { success: true, message: "File pushed successfully" }
 }

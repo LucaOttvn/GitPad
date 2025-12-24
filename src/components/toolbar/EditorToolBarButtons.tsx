@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import Image from "next/image";
 import {useRouter} from "next/navigation";
 import {itemToPush} from "@/src/utils/signals";
+import { APIResponse } from "@/src/utils/models";
 
 interface EditorToolBarButtonsProps {
   sections: string[];
@@ -31,11 +32,12 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
     try {
       const promise = pushFile(filePath, itemToPush.value.content);
 
-      toast.promise(promise, {
+      const result = await toast.promise(promise, {
         loading: "Pushing file...",
         success: "File Pushed!",
         error: "Error while pushing",
       });
+      if ((result as APIResponse).success) itemToPush.value = undefined
     } catch (error) {
       console.error(error);
     }
