@@ -18,14 +18,11 @@
         flex-direction: column;
         overflow-y: scroll;
 
-        .repo {
+        .repoSkeleton {
             width: 100%;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
+            padding: 1.3rem 0;
             background-color: var(--grey);
-            padding: 1rem;
-            border-radius: var(--borderRadiusM);
+            margin-top: 0.5rem;
         }
     }
 }

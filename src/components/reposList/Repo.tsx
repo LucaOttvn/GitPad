@@ -34,6 +34,7 @@ export default function Repo({repoName}: RepoProps) {
     });
     setSelectedRepo(selected);
     router.refresh();
+    router.push('/')
   };
 
   const isSelected = selectedRepo === repoName;

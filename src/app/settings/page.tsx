@@ -2,6 +2,7 @@ import {Suspense} from "react";
 import "./settings.scss";
 import ReposList from "@/src/components/reposList/ReposList";
 import LogoutButton from "@/src/components/buttons/LogoutButton";
+import ReposListSkeleton from "@/src/components/reposList/ReposListSkeleton";
 
 export default function SettingsPage() {
   return (
@@ -14,7 +15,7 @@ export default function SettingsPage() {
       >
         Settings
       </h1>
-      <Suspense fallback={<div>Loading</div>}>
+      <Suspense fallback={<ReposListSkeleton/>}>
         <ReposList />
       </Suspense>
       <LogoutButton />
