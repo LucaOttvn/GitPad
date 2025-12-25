@@ -68,12 +68,13 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
               }}
               className="mainButton clickableItem"
               style={{
-                color: "var(--white)",
+                color: "var(--blue)",
+                background: 'var(--white)'
               }}
             >
               <span>Discard & Leave</span>
             </button>
-            <button onClick={() => toast.dismiss(t.id)} className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200">
+            <button onClick={() => toast.dismiss(t.id)} className="mainButton clickableItem">
               Stay
             </button>
           </div>

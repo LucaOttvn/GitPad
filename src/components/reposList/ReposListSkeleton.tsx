@@ -6,7 +6,7 @@ export default function ReposListSkeleton() {
       <h2>Select your repo</h2>
       <div id="reposList">
         {Array.from({length: 10}).map((_, i) => (
-          <div className="repoSkeleton"></div>
+          <div key={"repoSkeleton" + i} className="repoSkeleton"></div>
         ))}
       </div>
     </div>
