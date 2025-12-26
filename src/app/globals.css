@@ -118,7 +118,7 @@ h2 {
 
 .disabledItem {
   pointer-events: none;
-  opacity: 50%;
+  filter: brightness(0.5)
 }
 
 .mainButton {

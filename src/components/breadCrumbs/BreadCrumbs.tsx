@@ -1,8 +1,8 @@
 "use client";
+import "./breadCrumbs.scss";
 import { usePathname } from "next/navigation";
-import "./shared-styles.scss";
 import Link from "next/link";
-import { PagesEnum } from "../utils/enums";
+import { PagesEnum } from "../../utils/enums";
 
 export default function BreadCrumbs() {
   const pathname = usePathname();
