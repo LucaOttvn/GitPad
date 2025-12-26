@@ -9,3 +9,8 @@ export enum PagesEnum {
     settings = 'settings',
     login = 'login'
 }
+
+export enum BottomSheetsEnum {
+    createItem = 'Create file or folder',
+    updateItem = 'Handle folder'
+}

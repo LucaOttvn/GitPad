@@ -40,7 +40,7 @@
   --green: #00a674;
   --darkGreen: #003e2c;
 
-  --red: #d62828;
+  --red: #FD2601;
 
   --blue: #083bfe;
 }
@@ -132,4 +132,9 @@ h2 {
   span {
     margin: 0 1rem;
   }
+}
+
+.accentButton {
+  background-color: var(--white);
+  color: var(--black);
 }
