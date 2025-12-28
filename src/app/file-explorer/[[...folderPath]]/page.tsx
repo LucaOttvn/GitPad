@@ -2,9 +2,9 @@ import BreadCrumbs from "@/src/components/breadCrumbs/BreadCrumbs";
 import FileComponent from "@/src/components/FileComponent";
 import FolderComponent from "@/src/components/FolderComponent";
 import getRepoContents from "@/src/server-actions/get-repo";
-import { TypesEnum } from "@/src/utils/enums";
-import { TreeItem } from "@/src/utils/models";
-import { buildTree, findByPath } from "path-mapper-json";
+import {TypesEnum} from "@/src/utils/enums";
+import {TreeItem} from "@/src/utils/models";
+import {buildTree, findByPath} from "path-mapper-json";
 import "../fileExplorer.scss";
 
 interface FolderPageProps {
@@ -51,7 +51,6 @@ export default async function FolderPage(props: FolderPageProps) {
 
   return (
     <div className="fileExplorer">
-      <BreadCrumbs />
       <div className="fileExplorerList">
         {/* For the rest of the tree, show the children */}
         {arr.map((item, index) => {

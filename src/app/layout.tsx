@@ -5,6 +5,7 @@ import {ToasterProvider} from "../components/ToasterProvider";
 import Providers from "../components/Providers";
 import {getServerSession} from "next-auth";
 import {authOptions} from "./api/auth/[...nextauth]/route";
+import BreadCrumbs from "../components/breadCrumbs/BreadCrumbs";
 
 export const metadata: Metadata = {
   title: "GitPad",
@@ -28,6 +29,7 @@ export default async function RootLayout({
       </head>
       <body>
         <Providers session={session}>
+          <BreadCrumbs />
           {children}
           <ToolBar />
           <ToasterProvider />

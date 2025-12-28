@@ -16,7 +16,7 @@ export default function ToolBar() {
 
   const sections = pathName.split("/").filter((x) => x);
 
-  // The toolbar doesn't have to be visible in the login page
+  // The toolbar doesn't have to be visible in the login page.
   if (pathName.includes(`/${PagesEnum.login}`)) return null;
 
   return (
