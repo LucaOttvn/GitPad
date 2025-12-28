@@ -3,7 +3,6 @@ import "./bottomSheet.scss";
 import {Drawer, DrawerContent, DrawerHeader, DrawerBody} from "@heroui/drawer";
 import {HeroUIProvider} from "@heroui/system";
 import CreateItemForm from "../forms/CreateItemForm";
-import UpdateItemForm from "../forms/UpdateItemForm";
 
 interface BottomSheetProps {
   currentBottomSheet: BottomSheetsEnum | null;
@@ -41,7 +40,6 @@ export default function BottomSheet(props: BottomSheetProps) {
               <DrawerHeader className="w-full center">{props.currentBottomSheet}</DrawerHeader>
               <DrawerBody>
                 {props.currentBottomSheet === BottomSheetsEnum.createItem && <CreateItemForm handleBottomSheet={props.handleBottomSheet} />}
-                {props.currentBottomSheet === BottomSheetsEnum.updateItem && <UpdateItemForm handleBottomSheet={props.handleBottomSheet} />}
               </DrawerBody>
             </>
           )}

@@ -11,6 +11,5 @@ export enum PagesEnum {
 }
 
 export enum BottomSheetsEnum {
-    createItem = 'Create file or folder',
-    updateItem = 'Handle folder'
+    createItem = 'Create file or folder'
 }

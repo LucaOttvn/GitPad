@@ -19,12 +19,6 @@ export default function ExplorerToolBarButtons() {
           <Image src="/icons/add.svg" alt="folder" width={25} height={25} />
         </span>
       </button>
-      {/* Edit button */}
-      <button onClick={() => setCurrentBottomSheet(BottomSheetsEnum.updateItem)} className="mainButton clickableItem">
-        <span>
-          <Image src="/icons/edit.svg" alt="folder" width={25} height={25} />
-        </span>
-      </button>
       {/* Settings button */}
       <Link className="mainButton clickableItem" href={`/${PagesEnum.settings}`}>
         <span>
