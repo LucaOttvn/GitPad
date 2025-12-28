@@ -108,17 +108,18 @@ h2 {
 
 .clickableItem {
   transition: 0.2s;
-  &:not(:disabled):active {
-    scale: 0.95;
-  }
   &:disabled {
     opacity: 50%;
+  }
+  &:not(:disabled):active {
+    scale: 0.95;
+    background-color: var(--lightBlack);
   }
 }
 
 .disabledItem {
   pointer-events: none;
-  filter: brightness(0.5)
+  filter: brightness(0.5);
 }
 
 .mainButton {
@@ -128,9 +129,19 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.2s;
+  border-bottom: solid 1px transparent;
 
   span {
     margin: 0 1rem;
+  }
+
+  &:disabled {
+    opacity: 50%;
+  }
+  &:not(:disabled):active {
+    scale: 0.95;
+    border-bottom: solid 1px var(--white);
   }
 }
 

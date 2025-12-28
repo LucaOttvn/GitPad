@@ -9,7 +9,14 @@ interface AnimatedDivProps {
 export default function AnimatedDiv(props: AnimatedDivProps) {
   return (
     <AnimatePresence>
-      <motion.div className={props.className ?? ''} initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: props.delay ?? 0, duration: 0.3}}>
+      <motion.div
+        key="animated" // Add this line
+        className={props.className ?? ""}
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}} // Add this line
+        transition={{delay: props.delay ?? 0, duration: 0.3}}
+      >
         {props.children}
       </motion.div>
     </AnimatePresence>

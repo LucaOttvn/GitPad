@@ -14,7 +14,7 @@ interface ButtonProps {
 export default function Button(props: ButtonProps) {
   return (
     <button
-      className={`mainButton clickableItem ${props.className || ""}`}
+      className={`mainButton ${props.className || ""}`}
       disabled={props.disabled}
       onClick={() => {
         props.onClick();

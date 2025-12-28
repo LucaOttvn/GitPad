@@ -68,12 +68,12 @@ export default function CreateItemForm(props: CreateItemFormProps) {
       </div>
 
       <div className="w-full center gap-4 flex">
-        <button type="button" className="mainButton clickableItem" onClick={() => props.handleBottomSheet(null)} disabled={isPending}>
+        <button type="button" className="mainButton" onClick={() => props.handleBottomSheet(null)} disabled={isPending}>
           <span>Cancel</span>
         </button>
         <button
           type="submit"
-          className="mainButton clickableItem"
+          className="mainButton"
           style={{
             background: "var(--darkWhite)",
             color: "var(--black)",

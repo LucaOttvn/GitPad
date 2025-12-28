@@ -14,13 +14,13 @@ export default function ExplorerToolBarButtons() {
   return (
     <>
       {/* Plus button */}
-      <button onClick={() => setCurrentBottomSheet(BottomSheetsEnum.createItem)} className="mainButton clickableItem">
+      <button onClick={() => setCurrentBottomSheet(BottomSheetsEnum.createItem)} className="mainButton">
         <span>
           <Image src="/icons/add.svg" alt="folder" width={25} height={25} />
         </span>
       </button>
       {/* Settings button */}
-      <Link className="mainButton clickableItem" href={`/${PagesEnum.settings}`}>
+      <Link className="mainButton" href={`/${PagesEnum.settings}`}>
         <span>
           <Image src="/icons/settings.svg" alt="folder" width={25} height={25} />
         </span>

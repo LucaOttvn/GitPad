@@ -70,7 +70,7 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
                   toast.error("Item deletion failed");
                 }
               }}
-              className="mainButton clickableItem"
+              className="mainButton"
               style={{
                 background: "var(--white)",
                 color: "var(--blue)",
@@ -78,7 +78,7 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
             >
               <span>Confirm</span>
             </button>
-            <button onClick={() => toast.dismiss(t.id)} className="mainButton clickableItem">
+            <button onClick={() => toast.dismiss(t.id)} className="mainButton">
               <span>Cancel</span>
             </button>
           </div>
@@ -95,20 +95,20 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
   return (
     <>
       {isPreviewMode ? (
-        <Link href={`${editorHref}`} className="mainButton clickableItem">
+        <Link href={`${editorHref}`} className="mainButton">
           <span>
             <Image src="/icons/edit.svg" alt="edit" width={25} height={25} />
           </span>
         </Link>
       ) : (
-        <Link href={`${pathName}/preview`} className="mainButton clickableItem">
+        <Link href={`${pathName}/preview`} className="mainButton">
           <span>
             <Image src="/icons/eye.svg" alt="visibility" width={25} height={25} />
           </span>
         </Link>
       )}
 
-      <button className="mainButton clickableItem" onClick={handlePush}>
+      <button className="mainButton" onClick={handlePush}>
         <span>
           <Image src="/icons/upload.svg" alt="upload" width={25} height={25} />
         </span>
@@ -118,7 +118,7 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
         onClick={() => {
           handleDelete();
         }}
-        className="mainButton clickableItem"
+        className="mainButton"
       >
         <span>
           <Image src="/icons/trash.svg" alt="trash" width={25} height={25} />

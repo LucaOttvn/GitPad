@@ -66,7 +66,7 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
                 router.back();
                 itemToPush.value = undefined;
               }}
-              className="mainButton clickableItem"
+              className="mainButton"
               style={{
                 color: "var(--blue)",
                 background: 'var(--white)'
@@ -74,7 +74,7 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
             >
               <span>Discard & Leave</span>
             </button>
-            <button onClick={() => toast.dismiss(t.id)} className="mainButton clickableItem">
+            <button onClick={() => toast.dismiss(t.id)} className="mainButton">
               Stay
             </button>
           </div>
@@ -115,7 +115,7 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
       )}
       {/* If in file editor in editor mode */}
       {isStandardBack && (
-        <button className="mainButton clickableItem" onClick={handleBack}>
+        <button className="mainButton" onClick={handleBack}>
           <Image src="/icons/back.svg" alt="back" width={25} height={25} />
         </button>
       )}

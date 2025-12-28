@@ -4,6 +4,7 @@ import {usePathname} from "next/navigation";
 import Link from "next/link";
 import {PagesEnum} from "../../utils/enums";
 import {useEffect, useRef} from "react";
+import AnimatedDiv from "../animated/AnimatedDiv";
 
 export default function BreadCrumbs() {
   const pathName = usePathname();
@@ -29,7 +30,11 @@ export default function BreadCrumbs() {
       <div className="scrollableContent" ref={scrollableRef}>
         {filteredBreadCrumbs.map((breadCrumb, index) => {
           const href = `/${PagesEnum.fileExplorer}/${filteredBreadCrumbs.slice(0, index + 1).join("/")}`;
-          return <Link key={breadCrumb + index} href={href} className="breadCrumb">{`/${breadCrumb}`}</Link>;
+          return (
+            <AnimatedDiv key={breadCrumb + index} className="breadCrumb">
+              <Link href={href}>{`/${breadCrumb}`}</Link>
+            </AnimatedDiv>
+          );
         })}
       </div>
     </div>
