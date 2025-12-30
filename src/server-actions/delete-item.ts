@@ -7,7 +7,7 @@ import { revalidatePath } from 'next/cache';
 
 export async function deleteItem(
     filePath: string
-): Promise<APIResponse> {
+): Promise<APIResponse | ErrorConstructor> {
     try {
         const baseUrl = await getGithubApiUrl()
         const url = `${baseUrl}/contents/${filePath}`
@@ -25,6 +25,8 @@ export async function deleteItem(
             },
         });
 
+        console.log(getResponse)
+
         if (!getResponse.ok) {
             const error = await getResponse.json()
             throw new Error(`Failed to fetch file metadata: ${error.message}`)
@@ -33,6 +35,8 @@ export async function deleteItem(
         const fileData = await getResponse.json();
         const sha = fileData.sha;
 
+        console.log('/////////')
+        console.log(url)
         const body = {
             message: `Delete ${filePath}`,
             committer: {
@@ -65,8 +69,8 @@ export async function deleteItem(
             success: true,
             message: 'Item deleted successfully'
         }
-    } catch (error) {
-        console.error(error)
-        return { message: (error as { message: string }).message, success: false }
+    } catch (error: any) {
+        console.error(error.message)
+        throw new Error((error as { success: boolean, message: string }).message || 'GitHub API error')
     }
 }

@@ -54,7 +54,7 @@ export default function CreateItemForm(props: CreateItemFormProps) {
     // Block other extensions
     return {
       success: false,
-      message: "Only .txt, .md files or folders (prefix with /) are allowed",
+      message: "Only .txt, .md files or folder names are allowed",
     };
   }, null);
 
@@ -62,7 +62,7 @@ export default function CreateItemForm(props: CreateItemFormProps) {
     <form action={handleCreateFile} className="flex flex-col gap-6">
       <div className="flex flex-col gap-5">
         <span className="instructions">
-          Prefix with / to create a folder. <br /> Use .txt or .md for files.
+          Type a name to create a folder. <br /> Add .txt or .md to create a file.
         </span>
         <TextInput name="newItemName" placeholder="Insert name" state={state || null} />
       </div>

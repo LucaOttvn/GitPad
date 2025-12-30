@@ -3,13 +3,15 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { PagesEnum } from "@/src/utils/enums";
 import { toast } from "react-hot-toast";
-import { itemToPush } from "@/src/utils/signals";
+import { selectedFiles, itemToPush } from "@/src/utils/signals";
+import { useSignals } from "@preact/signals-react/runtime";
 
 interface ToolBarBackButtonProps {
   sections: string[];
 }
 
 export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
+  useSignals();
   const pathName = usePathname();
   const router = useRouter();
 
@@ -69,7 +71,7 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
               className="mainButton"
               style={{
                 color: "var(--blue)",
-                background: 'var(--white)'
+                background: "var(--white)",
               }}
             >
               <span>Discard & Leave</span>
@@ -85,6 +87,8 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
       }
     );
   };
+
+  if (selectedFiles.value) return;
 
   return (
     <>

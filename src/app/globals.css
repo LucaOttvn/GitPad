@@ -171,3 +171,44 @@ h2 {
 .markdown > * {
   all: revert;
 }
+
+.treeItem {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5rem 0.5rem;
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+  }
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  padding-bottom: 6rem;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.test {
+  background-color: red !important;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: solid 1px var(--white);
+  background-color: var(--black);
+  &:checked {
+    background-color: var(--white);
+  }
+}

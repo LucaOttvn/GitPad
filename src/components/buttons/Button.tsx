@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import {CSSProperties} from "react";
+import { CSSProperties } from "react";
 
 interface ButtonProps {
   onClick: () => any;

@@ -1,7 +1,6 @@
 "use client";
 import {ChangeEvent, useState} from "react";
 import Markdown from "react-markdown";
-import "./shared-styles.scss";
 import {useSignal} from "@preact/signals-react";
 import AnimatedDiv from "./animated/AnimatedDiv";
 import { itemToPush } from "../utils/signals";
