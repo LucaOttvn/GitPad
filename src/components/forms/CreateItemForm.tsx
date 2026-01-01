@@ -3,7 +3,7 @@ import {validatePath, isTextFilePath} from "@/src/utils/methods";
 import {useActionState} from "react";
 import toast from "react-hot-toast";
 import TextInput from "../inputs/TextInput";
-import {usePathname} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import {BottomSheetsEnum} from "@/src/utils/enums";
 import { selectedFiles } from "@/src/utils/signals";
 
@@ -12,6 +12,7 @@ interface CreateItemFormProps {
 }
 
 export default function CreateItemForm(props: CreateItemFormProps) {
+  const router = useRouter()
   const pathName = usePathname();
 
   const sections = pathName
@@ -45,7 +46,7 @@ export default function CreateItemForm(props: CreateItemFormProps) {
 
       props.handleBottomSheet(null);
       
-      if (!selectedFiles.value) location.reload();
+      if (!selectedFiles.value) router.refresh()
       
       return {success: true, message: "Item created successfully"};
     } catch (error) {

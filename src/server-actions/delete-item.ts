@@ -59,9 +59,6 @@ export async function deleteItem(
             throw new Error(`GitHub API Error: ${error.message}`)
         }
 
-        // Revalidate cache because after the deletion of an item an automatic router.back() will happen and the previous page has to show the updated list
-        // revalidatePath('/', 'layout')
-
         return {
             success: true,
             message: 'Item deleted successfully'

@@ -11,6 +11,9 @@ import {deleteItem} from "@/src/server-actions/delete-item";
 import toast from "react-hot-toast";
 import {useRouter} from "next/navigation";
 
+/**
+ * This component contains the buttons in the toolbar that are visible while navigating in the file-explorer section.
+ */
 export default function ExplorerToolBarButtons() {
   const router = useRouter();
   useSignals();
