@@ -1,6 +1,5 @@
 import { getUserRepos } from "../../server-actions/get-user-repos";
 import "./reposList.scss";
-import "../shared-styles.scss";
 import Repo from "./Repo";
 
 export default async function ReposList() {
