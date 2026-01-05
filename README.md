@@ -21,22 +21,12 @@ A GitHub-based web app that connects to one of your repos and allows you to hand
 - Mobile-friendly UI for quick edits on the go
 - No extra backend: everything via GitHub API
 
-
-
-
-- Connect to any personal GitHub repo
-- Browse folders/subfolders as a file tree
-- View and edit .md / .txt notes
-- Mobile-friendly UI for quick edits on the go
-- No extra backend: everything via GitHub API
-
-
 ## Why GitPad?
 
 - Prefer Git as the single source of truth.
 - Didn’t want Notion/Obsidian vendor lock‑in.
 - Needed proper folders/subfolders instead of flat “boards”.
-- Wanted a cleaner mobile UX than GitHub’s built‑in editor.​
+- Wanted a cleaner mobile UX than GitHub’s built‑in editor for mobile devices.​
 
 ## Authentication
 
