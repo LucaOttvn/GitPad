@@ -8,6 +8,8 @@ Try it here: https://gitpad-omega.vercel.app/
  - [Features](#features)
  - [Why GitPad?](#why-gitpad)
  - [Authentication](#authentication)
+ - [Running Locally](#running-locally)
+    - [Env variables](#env-variables)
 
 ## About
 
@@ -33,3 +35,24 @@ A GitHub-based web app that connects to one of your repos and allows you to hand
 The NextAuth GitHub handler is defined in ```app/api/auth/[...nextauth]/route.ts``` (check the file for more details about how it works).
 
 ```src/proxy.ts``` handles the proxy that acts as a middleware between each api call in the app.
+
+## Running locally 
+
+```git clone``` > ```npm install``` > ```npm run dev```
+
+#### Env variables
+
+1. Create a .env file
+2. Insert the variables:
+   
+     - ```GITHUB_ID``` and ```GITHUB_SECRET``` are obtained by creating a new OAuth app in GitHub (settings > developer settings > OAuth apps).
+     - ```AUTH_SECRET```: randomly generate secret key used for authentication.
+  
+
+
+
+
+
+
+
+
