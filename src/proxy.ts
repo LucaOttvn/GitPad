@@ -19,6 +19,7 @@ export async function proxy(req: NextRequest) {
 
   const selectedRepo = req.cookies.get('selectedRepo')?.value
 
+  // If the user hasn't selected a repo yet, redirect to the settings page
   if (!selectedRepo && !pathname.startsWith('/settings') && pathname !== '/settings') {
     const settingsUrl = new URL("/settings", req.url)
     return NextResponse.redirect(settingsUrl)

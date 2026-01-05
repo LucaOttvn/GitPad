@@ -16,7 +16,7 @@ export const authOptions: NextAuthOptions = {
       // These two variables are created from the GIthub app's owner (me) from Github (profile > settings > developer settings > OAuth apps) and prove the app is actually owed by me.
       clientId: process.env.GITHUB_ID!,
       clientSecret: process.env.GITHUB_SECRET!,
-      // THe "repo" authorization level allows to:
+      // The "repo" authorization level allows to:
       // - Read/write code, commits, branches, files
       // - Manage collaborators, invitations, webhooks
       // - Access commit statuses, deployments, projects
