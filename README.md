@@ -6,7 +6,7 @@ Try it here: https://gitpad-omega.vercel.app/
 
 ![](./screenshots/gitpadMockup.png)
 
-![](./screenshots/GitPad-screen-record.mov)
+![](./screenshots/GitPad-screen-record.gif)
 
  - [About](#about)
  - [Features](#features)
