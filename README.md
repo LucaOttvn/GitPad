@@ -5,7 +5,8 @@ Effortless note-taking on GitHub.
 Try it here: https://gitpad-omega.vercel.app/
 
 ![](./screenshots/gitpadMockup.png)
-![](./screenshots/GitPad-screen-record.gif)
+
+![](./screenshots/GitPad-screen-record.mov)
 
  - [About](#about)
  - [Features](#features)
