@@ -73,7 +73,7 @@ export default function CreateItemForm(props: CreateItemFormProps) {
         <span className="instructions">
           Type a name to create a folder. <br /> Add .txt or .md to create a file.
         </span>
-        <TextInput name="newItemName" placeholder="Insert name" state={state || null} />
+        <TextInput ariaLabel="New item name" name="newItemName" placeholder="Insert name" state={state || null} />
       </div>
 
       <div className="w-full center gap-4 flex">
