@@ -19,8 +19,6 @@
 }
 
 :root {
-  --mainBoxShadow: var(--Black) 2px 2px 5px;
-  --bigBoxShadow: var(--Black) 0px 10px 30px;
   --borderRadiusM: 0.5rem;
   --borderRadiusL: 1.5rem;
   --borderRadiusXL: 2rem;

@@ -1,13 +1,13 @@
-// ThemeToggle.tsx
 "use client";
-import { useTheme } from "next-themes";
+import {useTheme} from "next-themes";
+import Icon from "./Icon";
 
 export function ThemeToggle() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const {theme, setTheme, resolvedTheme} = useTheme();
 
   return (
     <button onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}>
-      Toggle {theme === "light" ? "Dark" : "Light"} Mode
+      <Icon src={`/icons/${theme === "light" ? "lightMode" : "darkMode"}.svg`} width={30}/>
     </button>
   );
 }

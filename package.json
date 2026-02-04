@@ -27,6 +27,7 @@
     "react-dom": "^19.2.1",
     "react-hot-toast": "^2.6.0",
     "react-markdown": "^10.1.0",
+    "react-svg": "^16.4.1",
     "sass": "^1.94.2",
     "sonner": "^2.0.7"
   },

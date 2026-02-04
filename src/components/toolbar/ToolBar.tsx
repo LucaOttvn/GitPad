@@ -1,18 +1,18 @@
-"use client";;
+"use client";
 import "./toolbar.scss";
-import { usePathname } from "next/navigation";
+import {usePathname} from "next/navigation";
 import ToolBarBackButton from "./ToolBarBackButton";
 import EditorToolBarButtons from "./EditorToolBarButtons";
-import { PagesEnum } from "@/src/utils/enums";
+import {PagesEnum} from "@/src/utils/enums";
 import ExplorerToolBarButtons from "./ExplorerToolBarButtons";
 import Link from "next/link";
 import Image from "next/image";
+import Icon from "../Icon";
 
 /**
  * Bottom toolbar with multiple functions based on the current page.
  */
 export default function ToolBar() {
-
   const pathName = usePathname();
 
   const sections = pathName.split("/").filter((x) => x);
@@ -29,9 +29,8 @@ export default function ToolBar() {
       {sections[0] === PagesEnum.fileEditor && <EditorToolBarButtons sections={sections} />}
       {sections[0] === PagesEnum.settings && (
         <Link href="/" className="mainButton">
-          <span>
-            <Image alt="home" src='/icons/home.svg'width={25} height={25} loading="eager"/>
-          </span>
+          {/* <Image alt="home" src='/icons/home.svg'width={25} height={25} loading="eager"/> */}
+          {/* <Icon src="/icons/home.svg" /> */}
         </Link>
       )}
     </div>

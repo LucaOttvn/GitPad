@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import TextInput from "./TextInput";
 
-describe("TextInput", () => {
+describe("TextInput - accessibility", () => {
   it("Renders a textbox with the given name", () => {
     render(<TextInput ariaLabel="New item name" name="newItemName" state={null} />);
     const input = screen.getByRole("textbox", {name: 'New item name'});
