@@ -24,7 +24,8 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions);
 
   return (
-    <html lang="en">
+    // The suppressHydrationWarning only affects the html tag and it's necessary to avoid hydration errors since the theme provider sets a theme class on the html tag, causing a mismatch between the html on the server and the client one
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </head>

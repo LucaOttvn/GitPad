@@ -11,7 +11,6 @@ interface TextInputProps {
     message: string;
   } | null;
 }
-
 export default function TextInput(props: TextInputProps) {
   return (
     <div className="textInputContainer">

@@ -45,6 +45,11 @@
   --blue: #083bfe;
 }
 
+[data-theme='dark'] {
+  --black: white;
+  --white: black;
+}
+
 /* Prevent zoom on input focus (iOS Safari) */
 input,
 textarea,
