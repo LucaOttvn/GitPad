@@ -1,13 +1,13 @@
 .bottomSheet {
     z-index: 1;
-    background-color: var(--black);
-    border-top: solid 1px var(--white);
+    background-color: var(--mainBackground);
+    border-top: solid 1px var(--foreground);
     border-radius: 0;
     padding: 2rem 0 3rem 0;
 
     .instructions {
         font-size: 70%;
-        background-color: var(--blue);
+        background-color: var(--accent);
         padding: 0.5rem;
     }
 }

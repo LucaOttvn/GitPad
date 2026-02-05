@@ -1,15 +1,15 @@
-import Image from "next/image";
-import {useState} from "react";
-import BottomSheet from "../bottomSheet/BottomSheet";
+import { deleteItem } from "@/src/server-actions/delete-item";
+import { BottomSheetsEnum, PagesEnum } from "@/src/utils/enums";
+import { selectedFiles } from "@/src/utils/signals";
+import { useSignals } from "@preact/signals-react/runtime";
 import Link from "next/link";
-import {BottomSheetsEnum, PagesEnum} from "@/src/utils/enums";
-import {useSignals} from "@preact/signals-react/runtime";
-import Button from "../buttons/Button";
-import AnimatedDiv from "../animated/AnimatedDiv";
-import {selectedFiles} from "@/src/utils/signals";
-import {deleteItem} from "@/src/server-actions/delete-item";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import toast from "react-hot-toast";
-import {useRouter} from "next/navigation";
+import AnimatedDiv from "../animated/AnimatedDiv";
+import BottomSheet from "../bottomSheet/BottomSheet";
+import Button from "../buttons/Button";
+import Icon from "../Icon";
 
 /**
  * This component contains the buttons in the toolbar that are visible while navigating in the file-explorer section.
@@ -44,7 +44,7 @@ export default function ExplorerToolBarButtons() {
                   error: "Error while deleting",
                 });
 
-                console.log(result)
+                console.log(result);
 
                 // Refresh the client-side router cache to show the user the updated UI.
                 router.refresh();
@@ -53,8 +53,8 @@ export default function ExplorerToolBarButtons() {
               }}
               className="mainButton"
               style={{
-                background: "var(--white)",
-                color: "var(--blue)",
+                background: "var(--foreground)",
+                color: "var(--accent)",
               }}
             >
               <span>Confirm</span>
@@ -67,7 +67,7 @@ export default function ExplorerToolBarButtons() {
       ),
       {
         duration: Infinity,
-      }
+      },
     );
   };
 
@@ -77,7 +77,7 @@ export default function ExplorerToolBarButtons() {
         {/* Plus button */}
         <button onClick={() => setCurrentBottomSheet(BottomSheetsEnum.createItem)} className="mainButton">
           <span>
-            <Image src="/icons/add.svg" alt="folder" width={25} height={25} loading="eager"/>
+            <Icon src="/icons/add.svg" />
           </span>
         </button>
         {/* Edit button */}
@@ -88,13 +88,13 @@ export default function ExplorerToolBarButtons() {
           className="mainButton"
         >
           <span>
-            <Image src="/icons/edit.svg" alt="folder" width={25} height={25} loading="eager"/>
+            <Icon src="/icons/edit.svg" />
           </span>
         </button>
         {/* Settings button */}
         <Link className="mainButton" href={`/${PagesEnum.settings}`}>
           <span>
-            <Image src="/icons/settings.svg" alt="folder" width={25} height={25} loading="eager"/>
+            <Icon src="/icons/settings.svg" />
           </span>
         </Link>
         <BottomSheet currentBottomSheet={currentBottomSheet} handleBottomSheet={handleBottomSheet} />
@@ -119,8 +119,8 @@ export default function ExplorerToolBarButtons() {
           }}
           label="Delete"
           style={{
-            background: "var(--white)",
-            color: "var(--black)",
+            background: "var(--foreground)",
+            color: "var(--mainBackground)",
           }}
           disabled={selectedFiles.value.length === 0}
         />

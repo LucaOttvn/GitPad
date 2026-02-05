@@ -1,10 +1,10 @@
-import {createItem} from "@/src/server-actions/create-item";
-import {validatePath, isTextFilePath} from "@/src/utils/methods";
-import {useActionState} from "react";
+import { createItem } from "@/src/server-actions/create-item";
+import { validatePath, isTextFilePath } from "@/src/utils/methods";
+import { useActionState } from "react";
 import toast from "react-hot-toast";
 import TextInput from "../inputs/TextInput";
-import {usePathname, useRouter} from "next/navigation";
-import {BottomSheetsEnum} from "@/src/utils/enums";
+import { usePathname, useRouter } from "next/navigation";
+import { BottomSheetsEnum } from "@/src/utils/enums";
 import { selectedFiles } from "@/src/utils/signals";
 
 interface CreateItemFormProps {
@@ -84,8 +84,8 @@ export default function CreateItemForm(props: CreateItemFormProps) {
           type="submit"
           className="mainButton"
           style={{
-            background: "var(--darkWhite)",
-            color: "var(--black)",
+            background: "var(--foreground)",
+            color: "var(--mainBackground)",
           }}
           disabled={isPending}
         >

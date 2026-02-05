@@ -1,7 +1,7 @@
 "use client";
-import {ChangeEvent, useState} from "react";
+import { ChangeEvent, useState } from "react";
 import Markdown from "react-markdown";
-import {useSignal} from "@preact/signals-react";
+import { useSignal } from "@preact/signals-react";
 import AnimatedDiv from "./animated/AnimatedDiv";
 import { itemToPush } from "../utils/signals";
 
@@ -41,6 +41,7 @@ export default function FileEditor(props: FileEditorProps) {
           style={{
             padding: "1rem",
             paddingBottom: "6rem",
+            color: 'var(--foreground)'
           }}
         >
           {props.fileContent && <Markdown>{props.fileContent}</Markdown>}

@@ -1,8 +1,8 @@
 "use client";
 
-import {getCookie, setCookie} from "cookies-next";
-import {useRouter} from "next/navigation";
-import {useEffect, useState} from "react";
+import { getCookie, setCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface RepoProps {
   repoName: string;
@@ -44,8 +44,8 @@ export default function Repo({repoName}: RepoProps) {
       <span
         style={{
           width: '100%',
-          background: isSelected ? "var(--blue)" : "",
-          color: isSelected ? "var(--white)" : "",
+          background: isSelected ? "var(--accent)" : "",
+          color: isSelected ? "var(--foreground)" : "",
           padding: "0 0.5rem",
         }}
       >

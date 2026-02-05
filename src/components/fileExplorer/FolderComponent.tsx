@@ -1,10 +1,10 @@
 "use client";
-import {TreeItem} from "@/src/utils/models";
+import { TreeItem } from "@/src/utils/models";
 import Link from "next/link";
-import {usePathname} from "next/navigation";
+import { usePathname } from "next/navigation";
 import AnimatedDiv from "../animated/AnimatedDiv";
-import {useSignals} from "@preact/signals-react/runtime";
-import {selectedFiles} from "@/src/utils/signals";
+import { useSignals } from "@preact/signals-react/runtime";
+import { selectedFiles } from "@/src/utils/signals";
 
 interface FolderComponentProps {
   folder: TreeItem;
@@ -30,7 +30,7 @@ export default function FolderComponent(props: FolderComponentProps) {
         }}
       >
         <span>
-          <span style={{color: "var(--blue)"}}>/</span>
+          <span style={{color: "var(--accent)"}}>/</span>
           {props.folder.name}
         </span>
       </Link>

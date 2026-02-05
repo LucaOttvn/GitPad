@@ -1,10 +1,10 @@
 "use client";
-import {TreeItem} from "@/src/utils/models";
+import { TreeItem } from "@/src/utils/models";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import AnimatedDiv from "../animated/AnimatedDiv";
-import {useSignals} from "@preact/signals-react/runtime";
-import {selectedFiles} from "@/src/utils/signals";
+import { useSignals } from "@preact/signals-react/runtime";
+import { selectedFiles } from "@/src/utils/signals";
 
 interface FileComponentProps {
   file: TreeItem;
@@ -62,8 +62,8 @@ export default function FileComponent(props: FileComponentProps) {
           <span>{fileName}</span>
           <span
             style={{
-              color: "var(--blue)",
-              background: "var(--white)",
+              color: "var(--accent)",
+              background: "var(--fileExtension)",
               fontWeight: "bold",
               paddingRight: "0.2rem",
             }}

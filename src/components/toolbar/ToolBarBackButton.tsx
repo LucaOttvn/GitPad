@@ -1,10 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { PagesEnum } from "@/src/utils/enums";
 import { toast } from "react-hot-toast";
 import { selectedFiles, itemToPush } from "@/src/utils/signals";
 import { useSignals } from "@preact/signals-react/runtime";
+import Icon from "../Icon";
 
 interface ToolBarBackButtonProps {
   sections: string[];
@@ -15,7 +15,7 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
   const pathName = usePathname();
   const router = useRouter();
 
-  let isBackDisabled = props.sections.length === 1 ? " disabledItem" : " clickableItem";
+  const isBackDisabled = props.sections.length === 1 ? " disabledItem" : " clickableItem";
 
   const filePath = props.sections.slice(1).join("/");
 
@@ -70,8 +70,8 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
               }}
               className="mainButton"
               style={{
-                color: "var(--blue)",
-                background: "var(--white)",
+                color: "var(--accent)",
+                background: "var(--foreground)",
               }}
             >
               <span>Discard & Leave</span>
@@ -108,19 +108,19 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
       {/* Back button behavior in file-explorer */}
       {props.sections[0] === PagesEnum.fileExplorer && (
         <Link href={backButtonHref} className={"mainButton" + isBackDisabled}>
-          <Image src="/icons/back.svg" alt="back" width={25} height={25} />
+          <Icon src="/icons/back.svg"/>
         </Link>
       )}
       {/* If in file editor and preview mode */}
       {props.sections[0] === PagesEnum.fileEditor && props.sections.includes("preview") && (
         <Link href={backButtonHref} className={"mainButton" + isBackDisabled}>
-          <Image src="/icons/back.svg" alt="back" width={25} height={25} />
+          <Icon src="/icons/back.svg"/>
         </Link>
       )}
       {/* If in file editor in editor mode */}
       {isStandardBack && (
         <button className="mainButton" onClick={handleBack}>
-          <Image src="/icons/back.svg" alt="back" width={25} height={25} />
+          <Icon src="/icons/back.svg"/>
         </button>
       )}
     </>

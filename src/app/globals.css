@@ -25,27 +25,30 @@
 
   --glass: hsla(0, 0%, 100%, 0.1);
 
-  --white: #ffffff;
   --darkWhite: #e6e6e6;
-
-  --black: #000000;
-  --lightBlack: #181818;
-
+  --lightBlack: #202020;
+  
+  --mainBackground: #000000;
+  --foreground: #ffffff;
+  --fileExtension: #ffffff;
+  
   --darkGrey: #252525;
   --grey: #303030;
   --lightGrey: #909090;
-
+  
   --green: #00a674;
   --darkGreen: #003e2c;
-
+  
   --red: #fd2601;
-
-  --blue: #083bfe;
+  
+  --accent: #083bfe;
 }
 
-[data-theme='dark'] {
-  --black: white;
-  --white: black;
+[data-theme='light'] {
+  --mainBackground: white;
+  --foreground: black;
+  --lightBlack: #909090;
+  --fileExtension: #c4c4c4;
 }
 
 /* Prevent zoom on input focus (iOS Safari) */
@@ -89,10 +92,10 @@ select {
 body {
   font-family: "SpaceMono-Regular", sans-serif;
   font-size: 1.2rem;
-  background-color: var(--black);
+  background-color: var(--mainBackground);
   background-image: radial-gradient(var(--lightBlack) 1px, transparent 1px);
   background-size: 16px 16px;
-  color: var(--white);
+  color: var(--foreground);
   width: 100%;
   height: 100svh;
 }
@@ -148,19 +151,19 @@ h2 {
   }
   &:not(:disabled):active {
     scale: 0.95;
-    border-bottom: solid 1px var(--white);
+    border-bottom: solid 1px var(--foreground);
   }
 }
 
 .accentButton {
-  background-color: var(--white);
-  color: var(--black);
+  background-color: var(--foreground);
+  color: var(--mainBackground);
 }
 
 .loader {
   width: 90px;
   height: 14px;
-  --c: var(--white) 90deg, var(--black) 0;
+  --c: var(--foreground) 90deg, var(--mainBackground) 0;
   background: conic-gradient(from 135deg at top, var(--c)) 0 0, conic-gradient(from -45deg at bottom, var(--c)) 0 100%;
   background-size: calc(100% / 4) 50%;
   background-repeat: repeat-x;
@@ -213,9 +216,9 @@ input[type="checkbox"] {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  border: solid 1px var(--white);
-  background-color: var(--black);
+  border: solid 1px var(--foreground);
+  background-color: var(--mainBackground);
   &:checked {
-    background-color: var(--white);
+    background-color: var(--foreground);
   }
 }

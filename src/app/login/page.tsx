@@ -1,9 +1,9 @@
 "use client";
 import Button from "@/src/components/buttons/Button";
-import {PagesEnum} from "@/src/utils/enums";
-import {signIn, useSession} from "next-auth/react";
+import { PagesEnum } from "@/src/utils/enums";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
-import {redirect} from "next/navigation";
+import { redirect } from "next/navigation";
 
 export default function LoginPage() {
   const {data: session} = useSession();
@@ -32,8 +32,8 @@ export default function LoginPage() {
         iconSrc="/icons/github.svg"
         style={{
           width: "fit-content",
-          color: 'var(--black)',
-          background: 'var(--white)',
+          color: 'var(--mainBackground)',
+          background: 'var(--foreground)',
         }}
         label="Sign in with Github"
       />

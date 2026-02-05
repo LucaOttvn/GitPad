@@ -5,10 +5,10 @@ import { useSignal } from "@preact/signals-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import toast from "react-hot-toast";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { itemToPush } from "@/src/utils/signals";
 import { APIResponse } from "@/src/utils/models";
+import Icon from "../Icon";
 
 interface EditorToolBarButtonsProps {
   sections: string[];
@@ -72,8 +72,8 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
               }}
               className="mainButton"
               style={{
-                background: "var(--white)",
-                color: "var(--blue)",
+                background: "var(--foreground)",
+                color: "var(--accent)",
               }}
             >
               <span>Confirm</span>
@@ -86,7 +86,7 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
       ),
       {
         duration: Infinity,
-      }
+      },
     );
   };
 
@@ -97,20 +97,20 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
       {isPreviewMode ? (
         <Link href={`${editorHref}`} className="mainButton">
           <span>
-            <Image src="/icons/edit.svg" alt="edit" width={25} height={25} loading="eager"/>
+            <Icon src="/icons/edit.svg" />
           </span>
         </Link>
       ) : (
         <Link href={`${pathName}/preview`} className="mainButton">
           <span>
-            <Image src="/icons/eye.svg" alt="visibility" width={25} height={25} loading="eager"/>
+            <Icon src="/icons/eye.svg" />
           </span>
         </Link>
       )}
 
       <button className="mainButton" onClick={handlePush}>
         <span>
-          <Image src="/icons/upload.svg" alt="upload" width={25} height={25} loading="eager"/>
+          <Icon src="/icons/upload.svg" />
         </span>
       </button>
       {/* Trash button */}
@@ -121,7 +121,7 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
         className="mainButton"
       >
         <span>
-          <Image src="/icons/trash.svg" alt="trash" width={25} height={25} loading="eager"/>
+          <Icon src="/icons/trash.svg" />
         </span>
       </button>
     </>

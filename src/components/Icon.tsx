@@ -1,4 +1,4 @@
-import {ReactSVG} from "react-svg";
+import { ReactSVG } from "react-svg";
 
 interface IconProps {
   src: string;
@@ -9,17 +9,10 @@ export default function Icon(props: IconProps) {
   return (
     <ReactSVG
       src={props.src}
-      style={{width: props.width}}
       beforeInjection={(svg) => {
-        // Ensure the <svg> element itself is themed too.
-        svg.setAttribute("width", `${props.width ?? 18}`);
+        svg.setAttribute("width", `${props.width ?? 22}`);
 
-        const w = props.width ?? 18;
-
-        // Most reliable for sizing:
-        svg.style.width = `${w}px`;
-
-        const color = "var(--white)";
+        const color = "var(--foreground)";
         // Set a baseline for elements that use currentColor.
         svg.style.color = color;
 
