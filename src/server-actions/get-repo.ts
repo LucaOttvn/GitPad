@@ -8,11 +8,12 @@ import getGithubApiUrl from "./get-github-api-url";
  */
 export default async function getRepoContents() {
     try {
-        const session = await getServerSession(authOptions) as any
+        const session = await getServerSession(authOptions)
+        if (!session) throw Error('Session not available')
         const baseUrl = await getGithubApiUrl()
         const response = await fetch(`${baseUrl}/git/trees/main?recursive=1`, {
             headers: {
-                Authorization: `Bearer ${session.accessToken}`,
+                Authorization: `Bearer ${(session as unknown as {accessToken: string}).accessToken}`,
                 'Accept': 'application/vnd.github+json'
             },
         })

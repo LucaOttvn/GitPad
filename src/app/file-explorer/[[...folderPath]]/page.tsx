@@ -1,5 +1,5 @@
-import { TreeItem } from "@/src/utils/models";
-import { buildTree, findByPath } from "path-mapper-json";
+import {TreeItem} from "@/src/utils/models";
+import {buildTree, findByPath} from "path-mapper-json";
 import "../fileExplorer.scss";
 import getRepoContents from "@/src/server-actions/get-repo";
 import FileExplorerList from "@/src/components/fileExplorer/FileExplorerList";
@@ -12,7 +12,7 @@ export default async function FolderPage(props: FolderPageProps) {
   const response = await getRepoContents();
 
   // Extract the paths from each file in the tree.
-  const paths = response.tree.map((item: any) => item.path);
+  const paths = response.tree.map((item: {path: string}) => item.path);
 
   const tree: TreeItem[] = buildTree(paths);
 
@@ -39,7 +39,7 @@ export default async function FolderPage(props: FolderPageProps) {
 
   return (
     <div className="fileExplorer">
-      <FileExplorerList items={items}/>
+      <FileExplorerList items={items} />
     </div>
   );
 }

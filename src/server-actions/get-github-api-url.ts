@@ -8,7 +8,7 @@ import { authOptions } from "../app/api/auth/[...nextauth]/route";
 */
 export default async function getGithubApiUrl() {
     try {
-        const session = await getServerSession(authOptions) as any;
+        const session = await getServerSession(authOptions);
         if (!session || !session.user || !session.user.name) {
             throw Error('No valid Github session')
         }

@@ -6,7 +6,7 @@ import Providers from "../components/Providers";
 import {getServerSession} from "next-auth";
 import {authOptions} from "./api/auth/[...nextauth]/route";
 import BreadCrumbs from "../components/breadCrumbs/BreadCrumbs";
-import { Analytics } from "@vercel/analytics/next"
+import {Analytics} from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "GitPad",
@@ -31,12 +31,14 @@ export default async function RootLayout({
       </head>
       <body>
         <Providers session={session}>
-          <BreadCrumbs />
-          {children}
-          <ToolBar />
+          <main>
+            <BreadCrumbs />
+            {children}
+            <ToolBar />
+          </main>
           <ToasterProvider />
         </Providers>
-        <Analytics/>
+        <Analytics />
       </body>
     </html>
   );
