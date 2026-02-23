@@ -1,8 +1,8 @@
 import {TreeItem} from "@/src/utils/models";
-import {buildTree, findByPath} from "path-mapper-json";
 import "../fileExplorer.scss";
 import getRepoContents from "@/src/server-actions/get-repo";
 import FileExplorerList from "@/src/components/fileExplorer/FileExplorerList";
+import { buildTree, findByPath } from "@/src/utils/methods";
 
 interface FolderPageProps {
   params: Promise<{folderPath: string[]}>;
